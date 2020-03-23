@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+ set timeout 5
+ set line [lindex $argv 0] 
+ spawn ssh-copy-id $line
+ expect {
+   "yes/no" {send "yes\r";exp_continue}
+   "password" {send "mq470180\r"}
+   }
+ expect eof
